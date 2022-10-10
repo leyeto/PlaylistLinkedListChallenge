@@ -12,7 +12,8 @@ public class Playlist {
   }
 
   public boolean addSongToPlaylist(Song song){
-    songInAlbum(song);
+//    songInAlbum(song);
+    return false;
 
   }
 

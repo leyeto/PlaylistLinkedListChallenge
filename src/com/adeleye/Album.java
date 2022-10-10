@@ -20,7 +20,7 @@ public class Album {
       System.out.println(songName + " already exists in album");
       return false;
     } else {
-      this.songsList.add(new Song(songName, songDuration);
+      this.songsList.add(new Song(songName, songDuration));
       System.out.println(songName + " added");
       return true;
     }
@@ -39,9 +39,6 @@ public class Album {
     return null;
   }
 
-  public boolean songInAlbum(Song findSong) {
-    return songsList.contains(findSong);
-  }
 
   public boolean songInAlbum(String findSong) {
     for (int i = 0; i < this.songsList.size(); i++) {
@@ -60,15 +57,17 @@ public class Album {
     return songsList;
   }
 
-  public boolean addToPlaylist(Song songToAdd, LinkedList<Song> playlist){
-    int songIndex = songIndex(songToAdd);
-    if(songIndex >= 0){
-      playlist.add(this.songsList.get(songIndex));
-      System.out.println(songToAdd.getName() + " added as track " + playlist.size());
+  public boolean addToPlaylist(String songToAdd, LinkedList<Song> playlist){
+    Song songFound = findSong(songToAdd);
+    if(songFound!= null){
+      playlist.add(songFound);
+      System.out.println(songToAdd + " added as track " + playlist.size());
       return true;
     }else{
-      
+      System.out.println(songToAdd + " not found, unable to add ");
+      return false;
     }
+
   }
 
 }
